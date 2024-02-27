@@ -1,0 +1,26 @@
+<h1>Products</h1>
+<ul>
+  @for (product of products; track product.id) {
+  <li>
+    {{ product.name }} - {{ product.price | currency }}
+    <button (click)="addToCart(product)">Add To Cart</button>
+    <button (click)="editProduct(product)" style="margin-left: 10px">Edit Product Name and Price as accordingly Edit Product and 25 </button>
+  </li>
+  } @empty {
+  <li>Empty list of users</li>
+  }
+</ul>
+
+<h1>Shopping Cart</h1>
+<ul>
+  @for (shoppingItem of shoppingItems(); track shoppingItem.id) {
+  <li>
+    {{ shoppingItem.name }} - {{ shoppingItem.price | currency }}
+    <button (click)="deletefromCart(shoppingItem)">Delete from Cart</button>
+  </li>
+  } @empty {
+  <li>Empty list of users</li>
+  }
+</ul>
+<p>Total Price : {{ this.totalValue() | currency }}</p>
+<p>Total count : {{ this.shoppingItems().length }}</p>
